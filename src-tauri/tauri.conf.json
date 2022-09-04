@@ -55,10 +55,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 900,
-        "resizable": false,
+        "height": 920,
+        "resizable": true,
         "title": "survivor-maker",
-        "width": 1600
+        "width": 1620
       }
     ]
   }

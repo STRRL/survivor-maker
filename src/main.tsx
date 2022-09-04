@@ -1,9 +1,8 @@
 import Phaser from "phaser";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import logoImg from "./assets/react.svg";
-import App from "./App";
-import "./style.css";
+import logoImg from "/vite.svg";
+import adhocTile from "/tiles/adhoc-tile.png";
+import adhocCharacter from "/characters/adhoc-character.png";
+import Hero from "./assets/entities/Hero";
 
 class DemoScene extends Phaser.Scene {
   constructor() {
@@ -11,9 +10,14 @@ class DemoScene extends Phaser.Scene {
   }
   preload() {
     this.load.image("logo", logoImg);
+    this.load.image("tile", adhocTile);
+    this.load.image("character", adhocCharacter);
   }
 
   create() {
+    const width = this.scale.width;
+    const height = this.scale.height;
+    this.add.tileSprite(0, 0, width, height, "tile").setOrigin(0, 0);
     const logo = this.add.image(400, 150, "logo");
     this.tweens.add({
       targets: logo,
@@ -23,6 +27,9 @@ class DemoScene extends Phaser.Scene {
       yoyo: true,
       loop: -1,
     });
+
+    const theHero = new Hero(this, width / 2, height / 2);
+    this.add.existing(theHero);
   }
 }
 
