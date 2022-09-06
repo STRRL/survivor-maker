@@ -15,15 +15,20 @@ export default class Hero extends Phaser.GameObjects.Container {
 
   preUpdate() {
     if (this.cursors.left.isDown) {
+      this.body.position.x -= this.speed;
       this.x -= this.speed;
     }
     if (this.cursors.right.isDown) {
+      this.body.position.x += this.speed;
+
       this.x += this.speed;
     }
     if (this.cursors.up.isDown) {
+      this.body.position.y -= this.speed;
       this.y -= this.speed;
     }
     if (this.cursors.down.isDown) {
+      this.body.position.y += this.speed;
       this.y += this.speed;
     }
   }
