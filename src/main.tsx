@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import logoImg from "/vite.svg";
 import adhocTile from "/tiles/adhoc-tile.png";
 import adhocCharacter from "/characters/adhoc-character.png";
+import adhocCharacterUnbreakable from "/characters/adhoc-character-unbreakable.png";
 import adhocMonster from "/monster/adhoc-monster.png";
 import Hero from "./entities/Hero";
 import Monster from "./entities/Monster";
@@ -15,6 +16,7 @@ class DemoScene extends Phaser.Scene {
     this.load.image("logo", logoImg);
     this.load.image("tile", adhocTile);
     this.load.image("character", adhocCharacter);
+    this.load.image("character-unbreakable", adhocCharacterUnbreakable);
     this.load.image("monster", adhocMonster);
   }
 
@@ -50,8 +52,16 @@ class DemoScene extends Phaser.Scene {
     logo: Phaser.GameObjects.GameObject,
     hero: Phaser.GameObjects.GameObject
   ) {
+    if (hero instanceof Hero) {
+      if (hero.unbreakable == true) {
+        console.log("Monster Died!");
+        this.scene.restart();
+        return;
+      }
+    }
+
+    console.log("Hero Died!");
     this.scene.restart();
-    console.log("Hero Died");
   }
 }
 
