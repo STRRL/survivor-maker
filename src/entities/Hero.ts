@@ -6,7 +6,7 @@ export default class Hero extends Phaser.GameObjects.Container {
 
   private speed: number = 5;
   private unbreakableSprite: Phaser.GameObjects.Sprite;
-  private unbreakable: boolean = false;
+  public unbreakable: boolean = false;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y);
